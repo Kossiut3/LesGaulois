@@ -30,5 +30,14 @@ public class Romain {
 		}
 	}
 	
+	
+	public static void main(String[] args) {
+		
+		Romain titus = new Romain("titus", 20);
+		titus.parler("On va conquerir l amazonie !!");
+		titus.recevoirCoup(90);
+		
+	}
+	
 
 }
