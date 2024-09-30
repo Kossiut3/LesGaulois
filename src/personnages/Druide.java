@@ -11,13 +11,18 @@ public class Druide {
 		this.effetPotionMin = effetPotionMin;
 		this.effetPotionMax = effetPotionMax;
 		parler("Bonjour, je suis le druide " + nom + 
-				" et ma potion peut aller d'une force " + effetPotionMin + " à " + effetPotionMax + ".");
+				" et ma potion peut aller d'une force " + effetPotionMin + " ï¿½ " + effetPotionMax + ".");
 		
 	}
 	
 	public String getNom() {
 		return nom;
 	}
+	
+	public int getforcePotion(){
+		return forcePotion;
+	}
+	
 	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "<< " + texte + " >>");
@@ -30,21 +35,30 @@ public class Druide {
 		Random random = new Random();
 		forcePotion = random.nextInt(effetPotionMin,effetPotionMax);
 		if (forcePotion > 7) {
-			parler("J ai preparé une super potion de force " + forcePotion);
+			parler("J ai preparï¿½ une super potion de force " + forcePotion);
 
 		}
 		else {
-			parler("Je n ai pas trouvé les ingredients, ma potion est seulement de force " + forcePotion);
+			parler("Je n ai pas trouvï¿½ les ingredients, ma potion est seulement de force " + forcePotion);
 		}
 		
 	}
 	public void booster(Gaulois gaulois) {
+		if (gaulois.getNom() == "ObÃ©lix") {
+			parler("Non, ObÃ©lix !... Tu n'auras pas de potion magique !");
+		}
+		else {
 		gaulois.boirePotion(forcePotion);
+		}
 	}
 	
 	public static void main(String[] args) {
 		Druide paroramix = new Druide("Paroramix", 5, 10);
 		paroramix.preparerPotion();
+		Gaulois Obelix = new Gaulois("ObÃ©lix", 7);
+		paroramix.booster(Obelix);
+		
+		
 	}
 	
 }

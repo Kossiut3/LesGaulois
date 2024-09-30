@@ -24,7 +24,7 @@ public class Romain {
 	public void recevoirCoup(int forceCoup) {
 		force -= forceCoup;
 		if (force > 0) {
-			parler("Aïe");
+			parler("AÃ¯e");
 		} else {
 			parler("J'abandonne...");
 		}
@@ -33,9 +33,11 @@ public class Romain {
 	
 	public static void main(String[] args) {
 		
-		Romain titus = new Romain("titus", 20);
-		titus.parler("On va conquerir l amazonie !!");
-		titus.recevoirCoup(90);
+		Romain minus = new Romain("minus", -6);
+		minus.parler("On va conquerir l amazonie !!");
+		minus.recevoirCoup(90);
+		Equipement bouclier = Equipement.BOUCLIER;
+		System.out.println(bouclier);
 		
 	}
 	
