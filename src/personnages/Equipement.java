@@ -5,8 +5,15 @@ public enum Equipement {
 	BOUCLIER("bouclier");
 	private String nom;
 	
-	Equipement(String nom) {
+	private Equipement(String nom) {
 		this.nom = nom;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return nom;
 	}
 
 }

@@ -1,10 +1,12 @@
 package personnages;
 import java.util.*;
 public class Druide {
+	private static final int FORCE_MOYENNE = 7;
 	private String nom;
 	private int effetPotionMin;
 	private int effetPotionMax;
 	private int forcePotion = 1;
+	Random random = new Random();
 	
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
@@ -32,9 +34,8 @@ public class Druide {
 	}
 	
 	public void preparerPotion() {
-		Random random = new Random();
 		forcePotion = random.nextInt(effetPotionMin,effetPotionMax);
-		if (forcePotion > 7) {
+		if (forcePotion > FORCE_MOYENNE) {
 			parler("J ai prepar� une super potion de force " + forcePotion);
 
 		}
@@ -44,7 +45,7 @@ public class Druide {
 		
 	}
 	public void booster(Gaulois gaulois) {
-		if (gaulois.getNom() == "Obélix") {
+		if (gaulois.getNom().equals("Obélix")) {
 			parler("Non, Obélix !... Tu n'auras pas de potion magique !");
 		}
 		else {
@@ -55,8 +56,8 @@ public class Druide {
 	public static void main(String[] args) {
 		Druide paroramix = new Druide("Paroramix", 5, 10);
 		paroramix.preparerPotion();
-		Gaulois Obelix = new Gaulois("Obélix", 7);
-		paroramix.booster(Obelix);
+		Gaulois obelix = new Gaulois("Obélix", 7);
+		paroramix.booster(obelix);
 		
 		
 	}
