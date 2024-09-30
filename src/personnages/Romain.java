@@ -3,7 +3,7 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
-	//private Equipement[] equipements = Equipement[2];
+	private Equipement[] equipements = new Equipement[2];
 	private int nbEquipement = 0;
 	
 	
@@ -35,7 +35,7 @@ public class Romain {
 		force -= forceCoup;
 		assert isInvariantSatisfied();
 		if (force > 0) {
-			parler("Aîe");
+			parler("Aï¿½e");
 		} else {
 			parler("J'abandonne...");
 		}
