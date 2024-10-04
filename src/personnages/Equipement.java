@@ -14,5 +14,10 @@ public enum Equipement {
 	public String toString() {
 		return nom;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(CASQUE);
+		
+	}
 
 }
