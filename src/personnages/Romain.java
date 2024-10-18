@@ -7,6 +7,7 @@ public class Romain {
 	private int nbEquipement = 0;
 	
 	
+	
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
@@ -30,17 +31,73 @@ public class Romain {
 		return force >= 0;
 	}
 	
-	public void recevoirCoup(int forceCoup) {
-		int var_loc = force;
+//	public void recevoirCoup(int forceCoup) {
+//		int var_loc = force;
+//		force -= forceCoup;
+//		assert isInvariantSatisfied();
+//		if (force > 0) {
+//			parler("A�e");
+//		} else {
+//			parler("J'abandonne...");
+//		}
+//		assert forceCoup < var_loc;
+//	}
+	
+	public int getForce() {
+		return force;
+	}
+	
+	public Equipement[] recevoirCoup(int forceCoup) {
+		Equipement[] equipementEjecte = null;
+		forceCoup = calculResistanceEquipement(forceCoup);
 		force -= forceCoup;
-		assert isInvariantSatisfied();
-		if (force > 0) {
-			parler("A�e");
-		} else {
+		if (force == 0) {
+		
+			parler("Aïe");
+		}
+		else {
+			equipementEjecte = ejecterEquipement();
 			parler("J'abandonne...");
 		}
-		assert forceCoup < var_loc;
-	}
+		return equipementEjecte; 
+		}
+	
+	private int calculResistanceEquipement(int forceCoup) {
+		String texte;
+		texte = "Ma force est de " + this.force + ", et la force du coup est de " + forceCoup;
+		int resistanceEquipement = 0;
+		if (nbEquipement != 0) {
+			texte += "\nMais heureusement, grace à mon équipement sa force est diminué de ";
+			for (int i = 0; i < nbEquipement; i++) {
+				if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER))) {
+					resistanceEquipement += 8;
+				} else {
+				System.out.println("Equipement casque");
+				resistanceEquipement += 5;
+				}
+				
+			}
+			texte = texte + resistanceEquipement + "!";
+		}
+		parler(texte);
+		forceCoup -= resistanceEquipement;
+		return forceCoup;
+		}
+	
+	private Equipement[] ejecterEquipement() {
+		Equipement[] equipementEjecte = new Equipement[nbEquipement];
+		System.out.println("L'équipement de " + nom.toString() + " s'envole sous la force du coup.");
+		
+		int nbEquipementEjecte = 0;
+		for (int i = 0; i < nbEquipement; i++) {
+			if (equipements[i] != null) {
+				equipementEjecte[nbEquipementEjecte] = equipements[i];
+				nbEquipementEjecte++;
+				equipements[i] = null;
+			} 
+		}
+		return equipementEjecte;
+		}
 	
 	public void sEquiper(Equipement equipement) {
 		
@@ -87,6 +144,8 @@ public class Romain {
 		
 		
 	}
+
+	
 	
 
 }
