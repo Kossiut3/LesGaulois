@@ -16,7 +16,7 @@ public class Romain {
 	
 	public String getNom() {
 		return nom;
-	}
+	} 
 	
 	
 	public void parler (String texte) {
@@ -50,17 +50,18 @@ public class Romain {
 	public Equipement[] recevoirCoup(int forceCoup) {
 		Equipement[] equipementEjecte = null;
 		forceCoup = calculResistanceEquipement(forceCoup);
-		force -= forceCoup;
-		if (force == 0) {
+		force = force - forceCoup;
+		assert isInvariantSatisfied();
+		if (force > 0) {
 		
 			parler("Aïe");
 		}
 		else {
 			equipementEjecte = ejecterEquipement();
 			parler("J'abandonne...");
-		}
+			}
 		return equipementEjecte; 
-		}
+	}
 	
 	private int calculResistanceEquipement(int forceCoup) {
 		String texte;
@@ -82,7 +83,7 @@ public class Romain {
 		parler(texte);
 		forceCoup -= resistanceEquipement;
 		return forceCoup;
-		}
+	}
 	
 	private Equipement[] ejecterEquipement() {
 		Equipement[] equipementEjecte = new Equipement[nbEquipement];
@@ -134,11 +135,11 @@ public class Romain {
 		
 		Romain minus = new Romain("minus", 6);
 		minus.parler("On va conquerir l amazonie !!");
-		minus.recevoirCoup(2);
-		minus.sEquiper(Equipement.BOUCLIER);
-		minus.sEquiper(Equipement.BOUCLIER);
-		minus.sEquiper(Equipement.CASQUE);
-		minus.sEquiper(Equipement.BOUCLIER);
+		do {
+			minus.recevoirCoup(2);
+		} while ( minus.getForce() > 0);
+		
+		System.out.println(minus.getForce());
 		
 		
 		

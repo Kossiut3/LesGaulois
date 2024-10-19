@@ -37,8 +37,7 @@ public class Gaulois {
 	
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		Equipement recompense[] = romain.recevoirCoup((force / 3) *
-		effetPotion);
+		Equipement recompense[] = romain.recevoirCoup((force / 3) *effetPotion);
 		for (int i = 0; recompense != null && i < recompense.length; i++,
 		nbtrophees++) {
 			this.trophees[nbtrophees] = recompense[i];
