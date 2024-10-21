@@ -83,6 +83,8 @@ public class Gaulois {
 		asterix.boirePotion(paroramix.getforcePotion());
 		asterix.frapper(cesar);
 		asterix.faireUneDonnation(musee1);
+		String aff = musee1.extraireInstructionOcaml();
+		System.out.println(aff);
 
 	}
 

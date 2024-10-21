@@ -11,7 +11,12 @@ public class Musee {
 		nbTrophee = nbTrophee + 1;
 		
 	}
-	public void extraireInstructionOcaml() {
-		
+	public String extraireInstructionOcaml() {
+		String declarationOcaml = " let musee = [ \n";
+		for(int i=0; i < nbTrophee; i++) {
+			declarationOcaml  += "'" + trophee[i].donnerNom() + "'" + ", '"+ trophee[i].stringEquipement() +"';\n" ;
+		}
+		declarationOcaml += "]";
+		return declarationOcaml;
 	}
 }
